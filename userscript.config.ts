@@ -5,8 +5,8 @@ export default defineConfig({
   outDir: "dist/userscript",
   clean: false,
   header: {
-    name: "",
-    namespace: "",
+    name: "Websim Github Integration",
+    namespace: "rman.dev",
     description: "",
     match: [],
     version: "0.0.0",

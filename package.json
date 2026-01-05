@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "lint": "oxlint",
-    "format": "oxfmt --list-different || oxfmt"
+    "format": "oxfmt --list-different || oxfmt",
+    "build": "astro build && usts build",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "astro": "6.0.0-alpha.4",
