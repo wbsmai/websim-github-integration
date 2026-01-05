@@ -1,0 +1,19 @@
+{
+  "name": "websim-github-integration",
+  "private": true,
+  "scripts": {
+    "lint": "oxlint",
+    "format": "oxfmt --list-different || oxfmt"
+  },
+  "dependencies": {
+    "astro": "6.0.0-alpha.4",
+    "octokit": "^5.0.5",
+    "solid-js": "^1.9.10"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.22.0",
+    "oxlint": "^1.37.0",
+    "usts": "^0.0.5",
+    "wrangler": "^4.54.0"
+  }
+}
