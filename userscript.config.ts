@@ -7,8 +7,8 @@ export default defineConfig({
   header: {
     name: "Websim Github Integration",
     namespace: "rman.dev",
-    description: "",
-    match: [],
+    description: "Websim Github Integration",
+    match: ["https://websim.com/*"],
     version: "0.0.0",
   },
 });
