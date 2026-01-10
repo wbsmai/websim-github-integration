@@ -32,25 +32,6 @@ bun run deploy     # Deploy to Cloudflare Workers
 - Use **UPPER_SNAKE_CASE** for constants
 - File names: **kebab-case** for directories, **camelCase** for TypeScript files
 
-### Import Patterns
-
-```typescript
-// External libraries first
-import { Octokit } from "octokit";
-import { createSignal } from "solid-js";
-
-// Internal imports next
-import { GitHubService } from "./services/github";
-import { WebsimAsset } from "./types/websim";
-```
-
-### Error Handling
-
-- Always handle async errors with try/catch or .catch()
-- Use proper TypeScript error types
-- Never throw non-Error objects
-- Use descriptive error messages
-
 ### Component Patterns (Solid.js)
 
 ```typescript
