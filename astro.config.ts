@@ -5,4 +5,5 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   integrations: [solid()],
   vite: { plugins: [tailwindcss()] },
+  site: "https://websim.rman.dev",
 });
