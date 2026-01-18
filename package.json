@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "oxlint",
     "format": "oxfmt --list-different || oxfmt",
-    "build": "astro build && usts build",
+    "build": "bunx astro build && usts build",
     "deploy": "wrangler deploy"
   },
   "dependencies": {
