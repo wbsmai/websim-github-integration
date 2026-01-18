@@ -8,18 +8,21 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^6.0.0-beta.1",
-    "@tailwindcss/vite": "^4.1.18",
     "astro": "^6.0.0-beta.1",
-    "convex": "^1.31.4",
+    "convex": "^1.31.5",
     "octokit": "^5.0.5",
     "solid-js": "^1.9.10",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@astrojs/solid-js": "^6.0.0-beta.1",
+    "@tailwindcss/vite": "^4.1.18",
     "oxfmt": "^0.24.0",
     "oxlint": "^1.39.0",
     "usts": "^0.0.5",
-    "wrangler": "^4.59.1"
+    "wrangler": "^4.59.2"
+  },
+  "overrides": {
+    "esbuild": "^0.27.2"
   }
 }
