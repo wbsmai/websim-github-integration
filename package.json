@@ -4,8 +4,8 @@
   "scripts": {
     "lint": "oxlint",
     "format": "oxfmt --list-different || oxfmt",
-    "build:astro": "astro build",
-    "build": "bun run build:astro && usts build",
+    "build": "astro build && usts build",
+    "build:ci": "bunx --bun astro build --define=process.versions.node:\"24.3.0\" && usts build",
     "deploy": "wrangler deploy"
   },
   "dependencies": {

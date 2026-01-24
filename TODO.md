@@ -75,33 +75,38 @@ Send a `DELETE` request to `https://websim.com/api/v1/projects/<project ID>/revi
 
 ```typescript
 function manual_sync(project_id: string, files_to_sync: Array) {
-  current_revision_id = get_info(project_id)
-  new_revision_data = create_new_revision(project_id,parent_revision=current_revision_id)
-  files_form = create_form(files_to_sync, new_revision_data.numeral_id)
-  post_assets(files_form)
-  post_sites(index_html, project_id, new_revision_data.numeral_id, new_revision_data.uuid)
-  set_draft_status_and_pinned_version()
+  current_revision_id = get_info(project_id);
+  new_revision_data = create_new_revision(project_id, (parent_revision = current_revision_id));
+  files_form = create_form(files_to_sync, new_revision_data.numeral_id);
+  post_assets(files_form);
+  post_sites(index_html, project_id, new_revision_data.numeral_id, new_revision_data.uuid);
+  set_draft_status_and_pinned_version();
 }
 
 function create_form(files) {
-  boundary = "-----boundary114514"
-  form = []
-  header_data = []
+  boundary = "-----boundary114514";
+  form = [];
+  header_data = [];
   for (file of files) {
-    header.files({ size:sizeof(file), existingAssetPath: file.path })
+    header.files({ size: sizeof(file), existingAssetPath: file.path });
   }
-  header = [boundary, 'Content-Disposition: form-data; name="contents"', '', JSON.stringify(header_data)]
-  form += header
+  header = [
+    boundary,
+    'Content-Disposition: form-data; name="contents"',
+    "",
+    JSON.stringify(header_data),
+  ];
+  form += header;
   for (file of files) {
     fileHeader = [
       boundary,
       `Content-Disposition: form-data; name="${i}"; filename="${file.name}"`,
-      `Content-Type: ${file.type || 'application/octet-stream'}`,
-      ''
-    ].join('\r\n');
-    form.append(fileHeader)
-    form.append(fileBinary)
+      `Content-Type: ${file.type || "application/octet-stream"}`,
+      "",
+    ].join("\r\n");
+    form.append(fileHeader);
+    form.append(fileBinary);
   }
-  form.join('\n') + '--'
+  form.join("\n") + "--";
 }
 ```

@@ -1,6 +1,5 @@
-import { defineConfig } from "usts/config";
-
 import solidPlugin from "@rolldown-plugin/solid";
+import { defineConfig } from "usts/config";
 
 export default defineConfig({
   entryPoint: "src/userscript/index.tsx",
