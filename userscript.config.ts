@@ -1,5 +1,7 @@
 import { defineConfig } from "usts/config";
 
+import solidPlugin from "@rolldown-plugin/solid";
+
 export default defineConfig({
   entryPoint: "src/userscript/index.tsx",
   outDir: "dist/userscript",
@@ -11,4 +13,5 @@ export default defineConfig({
     match: ["https://websim.com/*"],
     version: "0.0.0",
   },
+  plugins: [solidPlugin()],
 });

@@ -4,24 +4,25 @@
   "scripts": {
     "lint": "oxlint",
     "format": "oxfmt --list-different || oxfmt",
-    "build:astro": "bunx --bun astro build --define=process.versions.node:\"24.3.0\"",
+    "build:astro": "astro build",
     "build": "bun run build:astro && usts build",
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "astro": "^6.0.0-beta.1",
-    "convex": "^1.31.5",
+    "astro": "^6.0.0-beta.3",
+    "convex": "^1.31.6",
     "octokit": "^5.0.5",
-    "solid-js": "^1.9.10",
+    "solid-js": "^1.9.11",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^6.0.0-beta.1",
+    "@astrojs/solid-js": "^6.0.0-beta.2",
+    "@rolldown-plugin/solid": "^0.0.1",
     "@tailwindcss/vite": "^4.1.18",
-    "oxfmt": "^0.24.0",
-    "oxlint": "^1.39.0",
-    "usts": "^0.0.5",
-    "wrangler": "^4.59.2"
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0",
+    "usts": "^0.0.6",
+    "wrangler": "^4.60.0"
   },
   "overrides": {
     "esbuild": "^0.27.2"
