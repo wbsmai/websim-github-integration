@@ -4,7 +4,7 @@ This file contains guidelines and commands for agentic coding agents working in 
 
 ## Project Overview
 
-Websim GitHub Integration - bidirectional sync between Websim projects and GitHub repositories.
+Websim GitHub Integration - export from Websim projects to GitHub repositories.
 
 ## Development Commands
 
@@ -73,7 +73,7 @@ const assetUrl = `https://${projectId}.c.websim.com/${asset.path}?v=${revisionId
 - Build output: `dist/userscript/index.user.js`
 - Userscript config: `userscript.config.ts` (metadata, match patterns)
 - Backend: Cloudflare Workers (wrangler deploy)
-- Sync direction: Websim ↔ GitHub
+- Sync direction: Websim → GitHub
 
 ## File Organization
 
@@ -107,5 +107,5 @@ src/
 
 - Focus on code quality and safety
 - Use Solid.js reactive patterns
-- Implement proper GitHub app webhook handling
-- Ensure correct GitHub app permissions/auth flows
+- Export workflow: Websim project detection → asset fetch → GitHub commit
+- Ensure proper GitHub token permissions for repository access
