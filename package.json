@@ -9,8 +9,8 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "astro": "^6.0.0-beta.3",
-    "convex": "^1.31.6",
+    "astro": "^6.0.0-beta.9",
+    "convex": "^1.31.7",
     "octokit": "^5.0.5",
     "solid-js": "^1.9.11",
     "tailwindcss": "^4.1.18"
@@ -19,12 +19,13 @@
     "@astrojs/solid-js": "^6.0.0-beta.2",
     "@rolldown-plugin/solid": "^0.0.1",
     "@tailwindcss/vite": "^4.1.18",
-    "oxfmt": "^0.26.0",
-    "oxlint": "^1.41.0",
+    "oxfmt": "^0.28.0",
+    "oxlint": "^1.43.0",
     "usts": "^0.0.6",
-    "wrangler": "^4.60.0"
+    "wrangler": "^4.63.0"
   },
   "overrides": {
-    "esbuild": "^0.27.2"
+    "esbuild": "^0.27.2",
+    "unstorage": "alpha"
   }
 }
