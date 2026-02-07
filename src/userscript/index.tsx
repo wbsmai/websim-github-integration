@@ -1,4 +1,6 @@
+import { createSignal } from "solid-js";
 import { render } from "solid-js/web";
+import { Modal } from "./modal";
 
 function main() {
   const bottomSidebarSection = document.querySelector<HTMLDivElement>(
@@ -9,12 +11,21 @@ function main() {
     return;
   }
 
+  const [isModalOpen, setIsModalOpen] = createSignal<boolean>(false);
+
+  render(
+    () => <Modal isOpen={isModalOpen()} setIsOpen={setIsModalOpen} />,
+    document.body,
+  );
+
   const buttonEntryPoint = document.createElement("div");
   bottomSidebarSection.prepend(buttonEntryPoint);
 
-  const myButton = <button>My Button</button>;
+  const showModalButton = (
+    <button onclick={() => setIsModalOpen(true)}>Show modal</button>
+  );
 
-  render(() => myButton, bottomSidebarSection);
+  render(() => showModalButton, bottomSidebarSection);
 }
 
 main();

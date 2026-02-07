@@ -2,8 +2,8 @@
   "name": "websim-github-integration",
   "private": true,
   "scripts": {
-    "lint": "oxlint",
-    "format": "oxfmt --list-different || oxfmt",
+    "lint": "biome lint",
+    "format": "biome check --write --linter-enabled=false",
     "build": "astro build && usts build",
     "build:ci": "bunx --bun astro build --define=process.versions.node:\"24.3.0\" && usts build",
     "deploy": "wrangler deploy"
@@ -13,14 +13,14 @@
     "convex": "^1.31.7",
     "octokit": "^5.0.5",
     "solid-js": "^1.9.11",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "websim": "^0.0.12"
   },
   "devDependencies": {
     "@astrojs/solid-js": "^6.0.0-beta.2",
+    "@biomejs/biome": "2.3.14",
     "@rolldown-plugin/solid": "^0.0.1",
     "@tailwindcss/vite": "^4.1.18",
-    "oxfmt": "^0.28.0",
-    "oxlint": "^1.43.0",
     "usts": "^0.0.6",
     "wrangler": "^4.63.0"
   },
