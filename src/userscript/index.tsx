@@ -6,7 +6,12 @@ const PROFILE_MENU_DIV_SELECTOR = 'div > [aria-label*="profile menu"]';
 const ENTRYPOINT_ID = "button-entrypoint";
 
 function injectButton() {
-  if (document.getElementById(ENTRYPOINT_ID)) return;
+  console.log("Injecting Button");
+
+  if (document.getElementById(ENTRYPOINT_ID)) {
+    console.log("Button already exists");
+    return;
+  }
 
   const bottomSidebarSection = document.querySelector<HTMLDivElement>(
     PROFILE_MENU_DIV_SELECTOR,
