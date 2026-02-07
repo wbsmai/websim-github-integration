@@ -41,4 +41,6 @@ const observer = new MutationObserver(() => injectButton());
 
 observer.observe(document.body, { childList: true, subtree: true });
 
+window.addEventListener("urlchange", () => injectButton());
+
 injectButton();
