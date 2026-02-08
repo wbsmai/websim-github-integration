@@ -44,7 +44,7 @@ const observer = new MutationObserver(() => {
 });
 
 // @ts-expect-error
-window.observer = observer;
+unsafeWindow.observer = observer;
 
 observer.observe(document.body, { childList: true, subtree: true });
 

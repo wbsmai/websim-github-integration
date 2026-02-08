@@ -9,6 +9,7 @@ export default defineConfig({
     name: "Websim Github Integration",
     namespace: "rman.dev",
     description: "Websim Github Integration",
+    grant: ["unsafeWindow"],
     match: ["https://websim.com/*"],
     version: "0.0.0",
   },
