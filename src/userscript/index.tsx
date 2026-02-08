@@ -26,18 +26,25 @@ function injectButton() {
   const entry = document.createElement("div");
   entry.id = ENTRYPOINT_ID;
   bottomSidebarSection.prepend(entry);
+  observer.observe(bottomSidebarSection, { childList: true, subtree: true });
 
-  const App = (
+  const App = () => (
     <>
       <button onclick={() => setIsModalOpen(true)}>Show modal</button>
       <Modal isOpen={isModalOpen()} setIsOpen={setIsModalOpen} />
     </>
   );
 
-  render(() => App, entry);
+  render(App, entry);
 }
 
-const observer = new MutationObserver(() => injectButton());
+const observer = new MutationObserver(() => {
+  injectButton();
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+
+// @ts-expect-error
+window.observer = observer;
 
 observer.observe(document.body, { childList: true, subtree: true });
 
