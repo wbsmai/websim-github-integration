@@ -42,7 +42,7 @@ export const GET: APIRoute = async ({ url }) => {
   if (installationId) {
     const octokit = new Octokit({
       auth: {
-        clientId: env.GITHUB_CLIENT_ID,
+        appId: env.GITHUB_APP_ID,
         privateKey: GITHUB_PRIVATE_KEY,
       },
     });
