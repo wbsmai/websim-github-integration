@@ -29,7 +29,7 @@ export function login(): void {
   const top = window.screenY + (window.outerHeight - height) / 2;
 
   const popup = window.open(
-    "/api/auth/login",
+    "https://websim.rman.dev/api/auth/login",
     "GitHub Auth",
     `width=${width},height=${height},left=${left},top=${top}`,
   );
@@ -42,9 +42,12 @@ export function login(): void {
   const handleMessage = (event: MessageEvent) => {
     if (event.origin !== window.location.origin) return;
 
-    const { type, token } = event.data;
+    const { type, token, installationId } = event.data;
     if (type === "github-token") {
       setStoredToken(token);
+      if (installationId) {
+        setStoredInstallationId(installationId);
+      }
       window.removeEventListener("message", handleMessage);
       popup.close();
     }

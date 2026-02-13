@@ -1,5 +1,5 @@
 import type { Setter } from "solid-js";
-import { createSignal, onMount } from "solid-js";
+import { createEffect, createSignal, on, onMount } from "solid-js";
 import { Portal, Show } from "solid-js/web";
 import { getStoredToken, login } from "../services/github-auth";
 
@@ -17,11 +17,27 @@ export function Modal(props: {
   const [isAuthenticated, setIsAuthenticated] = createSignal(false);
   const [isLoading, setIsLoading] = createSignal(true);
 
-  onMount(async () => {
-    const token = await getStoredToken();
-    setIsAuthenticated(!!token);
-    setIsLoading(false);
-  });
+  async function checkAuth() {
+    try {
+      const token = await getStoredToken();
+      setIsAuthenticated(!!token);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  onMount(checkAuth);
+
+  createEffect(
+    on(
+      () => props.isOpen,
+      (isOpen) => {
+        if (isOpen && isLoading()) {
+          checkAuth();
+        }
+      },
+    ),
+  );
 
   return (
     <Show when={props.isOpen}>
