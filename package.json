@@ -4,6 +4,7 @@
   "scripts": {
     "lint": "biome lint",
     "format": "biome check --write --linter-enabled=false",
+    "typegen": "wrangler types ./src/worker-configuration.d.ts",
     "dev": "usts build --watch",
     "build": "astro build && usts build",
     "build:ci": "bunx --bun astro build --define=process.versions.node:\"24.3.0\" && usts build",
@@ -12,7 +13,6 @@
   "dependencies": {
     "@astrojs/cloudflare": "^13.0.0-beta.7",
     "astro": "^6.0.0-beta.11",
-    "convex": "^1.31.7",
     "octokit": "^5.0.5",
     "solid-js": "^1.9.11",
     "tailwindcss": "^4.1.18",

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.15/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -7,12 +7,17 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**/*.{ts,tsx,astro}", "!convex/_generated"]
+    "includes": ["**/*.{ts,tsx,astro}", "!src/worker-configuration.d.ts"]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "lineEnding": "lf"
+  },
+  "linter": {
+    "rules": {
+      "a11y": "warn"
+    }
   },
   "assist": {
     "enabled": true,
@@ -21,5 +26,22 @@
         "organizeImports": "on"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          }
+        }
+      }
+    }
+  ]
 }
