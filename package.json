@@ -10,6 +10,7 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.0.0-beta.7",
     "astro": "^6.0.0-beta.11",
     "convex": "^1.31.7",
     "octokit": "^5.0.5",
