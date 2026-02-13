@@ -1,5 +1,31 @@
 # Websim to GitHub Export Plan
 
+## Authentication (GitHub App OAuth)
+
+### Flow
+
+1. User clicks "Connect GitHub" in modal
+2. Redirect to GitHub authorization: `https://github.com/apps/{app_slug}/installations/new`
+3. User authorizes → GitHub redirects to `/api/auth/callback?code={code}`
+4. Cloudflare Worker exchanges code for access_token via GitHub API
+5. Token returned to userscript and stored via `GM.setValue`
+
+### Userscript Storage
+
+- Key: `github_token`
+- Use `await GM.setValue('github_token', token)`
+- Retrieve with `await GM.getValue('github_token')`
+
+### API Routes (Cloudflare Worker)
+
+- `GET /api/auth/login` → Initiates OAuth flow (redirects to GitHub)
+- `GET /api/auth/callback?code={code}` → Exchanges code for token, returns to userscript
+
+### Environment Variables
+
+- `GITHUB_APP_CLIENT_ID`
+- `GITHUB_APP_CLIENT_SECRET`
+
 ## How to get source code from Websim
 
 GET `https://websim.com/api/v1/projects/{project_id}/revisions/{revision_id}/assets`
