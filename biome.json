@@ -15,16 +15,13 @@
     "lineEnding": "lf"
   },
   "linter": {
-    "rules": {
-      "a11y": "warn"
-    }
+    "rules": { "a11y": "warn" },
+    "domains": { "solid": "recommended" }
   },
   "assist": {
     "enabled": true,
     "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
+      "source": { "organizeImports": "on" }
     }
   },
   "overrides": [

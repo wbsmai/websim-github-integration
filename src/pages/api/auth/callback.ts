@@ -4,7 +4,38 @@ import { Octokit } from "octokit";
 
 const GITHUB_PRIVATE_KEY = atob(env.GITHUB_PRIVATE_KEY_BASE_64);
 
-export const GET: APIRoute = async ({ url, redirect }) => {
+function createSuccessPage(token: string, installationId: string): string {
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <title>Authenticated</title>
+</head>
+<body>
+  <script>
+    const token = "${token}";
+    const installationId = "${installationId}";
+    if (token && window.opener) {
+      window.opener.postMessage({ type: "github-token", token, installationId }, "*");
+    }
+    window.close();
+  </script>
+</body>
+</html>`;
+}
+
+function createSimpleSuccessPage(): string {
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <title>Authenticated</title>
+</head>
+<body>
+  <script>window.close();</script>
+</body>
+</html>`;
+}
+
+export const GET: APIRoute = async ({ url }) => {
   const installationId = url.searchParams.get("installation_id");
   const code = url.searchParams.get("code");
 
@@ -29,7 +60,10 @@ export const GET: APIRoute = async ({ url, redirect }) => {
 
       const token = data.token;
 
-      return redirect(`/api/auth/callback?token=${token}`, 302);
+      return new Response(createSuccessPage(token, installationId), {
+        headers: { "Content-Type": "text/html" },
+        status: 200,
+      });
     } catch (error) {
       console.error("Failed to create installation token:", error);
       return new Response("Failed to authenticate with GitHub", {
@@ -49,7 +83,10 @@ export const GET: APIRoute = async ({ url, redirect }) => {
       });
 
       if (data.access_token) {
-        return redirect(`/api/auth/callback?token=${data.access_token}`, 302);
+        return new Response(createSimpleSuccessPage(), {
+          headers: { "Content-Type": "text/html" },
+          status: 200,
+        });
       }
 
       return new Response("No access token received", { status: 400 });
