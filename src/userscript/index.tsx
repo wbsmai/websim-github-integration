@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import { render } from "solid-js/web";
-import { Modal } from "./modal";
+import { Modal } from "./components/modal";
+import { SidebarButton } from "./components/sidebar-button";
 
 const PROFILE_MENU_DIV_SELECTOR = 'div > [aria-label*="profile menu"]';
 const ENTRYPOINT_ID = "button-entrypoint";
@@ -26,11 +27,10 @@ function injectButton() {
   const entry = document.createElement("div");
   entry.id = ENTRYPOINT_ID;
   bottomSidebarSection.prepend(entry);
-  observer.observe(bottomSidebarSection, { childList: true, subtree: true });
 
   const App = () => (
     <>
-      <button onclick={() => setIsModalOpen(true)}>Show modal</button>
+      <SidebarButton onClick={() => setIsModalOpen(true)} />
       <Modal isOpen={isModalOpen()} setIsOpen={setIsModalOpen} />
     </>
   );
@@ -38,16 +38,8 @@ function injectButton() {
   render(App, entry);
 }
 
-const observer = new MutationObserver(() => {
-  injectButton();
-  observer.observe(document.body, { childList: true, subtree: true });
-});
+setInterval(injectButton, 5000);
 
-// @ts-expect-error
-unsafeWindow.observer = observer;
-
-observer.observe(document.body, { childList: true, subtree: true });
-
-window.addEventListener("urlchange", () => injectButton());
+window.addEventListener("urlchange", injectButton);
 
 injectButton();

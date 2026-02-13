@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**/*.ts", "!convex/_generated"]
+    "includes": ["**/*.{ts,tsx,astro}", "!convex/_generated"]
   },
   "formatter": {
     "enabled": true,
