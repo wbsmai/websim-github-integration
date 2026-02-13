@@ -1,4 +1,5 @@
 import { env } from "cloudflare:workers";
+import { createAppAuth } from "@octokit/auth-app";
 import type { APIRoute } from "astro";
 import { Octokit } from "octokit";
 
@@ -41,6 +42,7 @@ export const GET: APIRoute = async ({ url }) => {
 
   if (installationId) {
     const octokit = new Octokit({
+      authStrategy: createAppAuth,
       auth: {
         appId: env.GITHUB_APP_ID,
         privateKey: GITHUB_PRIVATE_KEY,

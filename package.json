@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.0.0-beta.7",
+    "@octokit/auth-app": "^8.2.0",
     "astro": "^6.0.0-beta.11",
     "octokit": "^5.0.5",
     "solid-js": "^1.9.11",
