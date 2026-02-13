@@ -16,47 +16,12 @@ export function Modal(props: {
 }) {
   const [isAuthenticated, setIsAuthenticated] = createSignal(false);
   const [isLoading, setIsLoading] = createSignal(true);
-  const [repositories, setRepositories] = createSignal<Repository[]>([]);
-  const [isLoadingRepos, setIsLoadingRepos] = createSignal(false);
-  const [selectedRepo, setSelectedRepo] = createSignal<Repository | null>(null);
-
-  async function loadRepositories() {
-    const token = await getStoredToken();
-    if (!token) return;
-
-    setIsLoadingRepos(true);
-    try {
-      const response = await fetch("/api/repositories", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (response.ok) {
-        const repos = await response.json();
-        setRepositories(repos);
-      }
-    } catch (error) {
-      console.error("Failed to load repositories:", error);
-    } finally {
-      setIsLoadingRepos(false);
-    }
-  }
 
   onMount(async () => {
     const token = await getStoredToken();
     setIsAuthenticated(!!token);
     setIsLoading(false);
-
-    if (token) {
-      await loadRepositories();
-    }
   });
-
-  function handleExport() {
-    const repo = selectedRepo();
-    if (repo) {
-      props.selectedRepo(repo);
-      props.setIsOpen(false);
-    }
-  }
 
   return (
     <Show when={props.isOpen}>
@@ -109,7 +74,6 @@ export function Modal(props: {
                     <svg
                       height="20"
                       viewBox="0 0 16 16"
-                      version="1.1"
                       width="20"
                       fill="currentColor"
                     >
@@ -122,76 +86,6 @@ export function Modal(props: {
                 <p style={{ color: "#1a7f37", "margin-bottom": "1rem" }}>
                   Connected to GitHub
                 </p>
-
-                <Show
-                  when={!isLoadingRepos()}
-                  fallback={<p>Loading repositories...</p>}
-                >
-                  <Show
-                    when={repositories().length > 0}
-                    fallback={
-                      <p>
-                        No repositories found. Install the app on a repository
-                        first.
-                      </p>
-                    }
-                  >
-                    <label
-                      style={{
-                        display: "block",
-                        "margin-bottom": "0.5rem",
-                        "font-weight": "600",
-                      }}
-                    >
-                      Select repository
-                    </label>
-                    <select
-                      style={{
-                        width: "100%",
-                        padding: "0.5rem",
-                        "border-radius": "6px",
-                        border: "1px solid #d0d7de",
-                        "font-size": "1rem",
-                        "margin-bottom": "1rem",
-                      }}
-                      onChange={(e) => {
-                        const fullName = e.currentTarget.value;
-                        const repo = repositories().find(
-                          (r) => r.fullName === fullName,
-                        );
-                        setSelectedRepo(repo || null);
-                      }}
-                    >
-                      <option value="">Choose a repository...</option>
-                      {repositories().map((repo) => (
-                        <option value={repo.fullName}>
-                          {repo.fullName}
-                          {repo.isPrivate ? " (private)" : ""}
-                        </option>
-                      ))}
-                    </select>
-
-                    <button
-                      style={{
-                        "background-color": selectedRepo()
-                          ? "#1a7f37"
-                          : "#d0d7de",
-                        color: "#ffffff",
-                        border: "none",
-                        padding: "0.75rem 1.5rem",
-                        "border-radius": "8px",
-                        "font-size": "1rem",
-                        "font-weight": "600",
-                        cursor: selectedRepo() ? "pointer" : "not-allowed",
-                        width: "100%",
-                      }}
-                      onClick={handleExport}
-                      disabled={!selectedRepo()}
-                    >
-                      Export Project
-                    </button>
-                  </Show>
-                </Show>
               </Show>
             </Show>
 
