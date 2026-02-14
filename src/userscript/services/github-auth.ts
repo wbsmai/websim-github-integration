@@ -23,8 +23,8 @@ export async function clearStoredToken(): Promise<void> {
 }
 
 export function login(): void {
-  const width = 600;
-  const height = 700;
+  const width = 800;
+  const height = 900;
   const left = window.screenX + (window.outerWidth - width) / 2;
   const top = window.screenY + (window.outerHeight - height) / 2;
 

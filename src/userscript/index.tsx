@@ -24,11 +24,6 @@ function injectButton() {
   }
 
   const [isModalOpen, setIsModalOpen] = createSignal<boolean>(false);
-  const [_selectedRepo, setSelectedRepo] = createSignal<{
-    fullName: string;
-    name: string;
-    isPrivate: boolean;
-  } | null>(null);
 
   const entry = document.createElement("div");
   entry.id = ENTRYPOINT_ID;
@@ -40,7 +35,6 @@ function injectButton() {
       <Modal
         isOpen={isModalOpen()}
         setIsOpen={setIsModalOpen}
-        selectedRepo={setSelectedRepo}
       />
     </>
   );

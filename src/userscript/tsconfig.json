@@ -8,7 +8,7 @@
     "moduleResolution": "bundler",
     "moduleDetection": "force",
 
-    "types": ["@violentmonkey/types"],
+    "types": ["@violentmonkey/types", "usts/types"],
 
     "skipLibCheck": true,
 
