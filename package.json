@@ -7,7 +7,6 @@
     "typegen": "wrangler types ./src/worker-configuration.d.ts",
     "dev": "usts build --watch",
     "build": "astro build && usts build",
-    "build:ci": "bunx --bun astro build --define=process.versions.node:\"24.3.0\" && usts build",
     "deploy": "wrangler deploy"
   },
   "dependencies": {
