@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
 
   "name": "websim-github-integration",
-  "compatibility_date": "2025-12-02",
+  "compatibility_date": "2026-03-17",
 
   "assets": {
     "directory": "./dist",

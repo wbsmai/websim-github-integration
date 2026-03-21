@@ -1,44 +1,18 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.15/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.4.8/schema.json",
+  "extends": ["@gameroman/config/biome"],
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**/*.{ts,tsx,astro}", "!src/worker-configuration.d.ts"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "lineEnding": "lf"
+    "includes": ["**", "!src/worker-configuration.d.ts"]
   },
   "linter": {
-    "rules": { "a11y": "warn" },
-    "domains": { "solid": "recommended" }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": { "organizeImports": "on" }
-    }
+    "rules": { "a11y": "off" },
+    "domains": { "solid": "all" }
   },
   "overrides": [
     {
-      "includes": ["**/*.astro"],
-      "linter": {
-        "rules": {
-          "style": {
-            "useConst": "off",
-            "useImportType": "off"
-          },
-          "correctness": {
-            "noUnusedVariables": "off",
-            "noUnusedImports": "off"
-          }
-        }
-      }
+      "includes": ["wrangler.jsonc"],
+      "json": { "formatter": { "trailingCommas": "all" } }
     }
   ]
 }
