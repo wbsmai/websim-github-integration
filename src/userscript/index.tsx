@@ -32,10 +32,7 @@ function injectButton() {
   const App = () => (
     <>
       <SidebarButton onClick={() => setIsModalOpen(true)} />
-      <Modal
-        isOpen={isModalOpen()}
-        setIsOpen={setIsModalOpen}
-      />
+      <Modal isOpen={isModalOpen()} setIsOpen={setIsModalOpen} />
     </>
   );
 

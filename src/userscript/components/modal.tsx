@@ -3,10 +3,7 @@ import { createEffect, createSignal, on, onMount } from "solid-js";
 import { Portal, Show } from "solid-js/web";
 import { getStoredToken, login } from "../services/github-auth";
 
-export function Modal(props: {
-  isOpen: boolean;
-  setIsOpen: Setter<boolean>;
-}) {
+export function Modal(props: { isOpen: boolean; setIsOpen: Setter<boolean> }) {
   const [isAuthenticated, setIsAuthenticated] = createSignal(false);
   const [isLoading, setIsLoading] = createSignal(true);
 
