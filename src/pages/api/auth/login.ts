@@ -71,7 +71,8 @@ export const GET: APIRoute = async ({ url, redirect }) => {
       const authUrl = new URL(redirectUri);
       authUrl.searchParams.set(
         "installation_id",
-        installations[0]!.id.toString(),
+        // @ts-expect-error
+        installations[0].id.toString(),
       );
       authUrl.searchParams.set("state", state);
       return redirect(authUrl.toString(), 302);

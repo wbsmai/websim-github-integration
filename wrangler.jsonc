@@ -6,13 +6,13 @@
 
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page",
+    "not_found_handling": "404-page"
   },
 
   "build": {
     "command": "bun run build",
-    "cwd": ".",
+    "cwd": "."
   },
 
-  "observability": { "logs": { "enabled": true } },
+  "observability": { "logs": { "enabled": true } }
 }
