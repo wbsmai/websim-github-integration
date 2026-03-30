@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.8/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.9/schema.json",
   "extends": ["@gameroman/config/biome"],
   "files": {
     "ignoreUnknown": false,
@@ -8,11 +8,5 @@
   "linter": {
     "rules": { "a11y": "off" },
     "domains": { "solid": "all" }
-  },
-  "overrides": [
-    {
-      "includes": ["wrangler.jsonc"],
-      "json": { "formatter": { "trailingCommas": "all" } }
-    }
-  ]
+  }
 }
