@@ -5,7 +5,7 @@
     "build": "astro build && usts build",
     "deploy": "wrangler deploy",
     "dev": "usts build --watch",
-    "format": "biome check --write --linter-enabled=false",
+    "format": "biome check --write",
     "lint": "biome check",
     "typegen": "wrangler types ./src/worker-configuration.d.ts"
   },

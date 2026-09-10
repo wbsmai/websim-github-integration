@@ -1,5 +1,3 @@
-import { getProjectRevisionAssets, getUserProjectBySlug } from "websim";
-
 export function getProjectInfo() {
   const parts = location.pathname.split("/");
 

@@ -29,12 +29,13 @@ function injectButton() {
   entry.id = ENTRYPOINT_ID;
   bottomSidebarSection.prepend(entry);
 
-  const App = () => (
+  function App() {
+    return;
     <>
       <SidebarButton onClick={() => setIsModalOpen(true)} />
       <Modal isOpen={isModalOpen()} setIsOpen={setIsModalOpen} />
-    </>
-  );
+    </>;
+  }
 
   render(App, entry);
 }
