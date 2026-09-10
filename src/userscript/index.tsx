@@ -1,5 +1,5 @@
-import { createSignal } from "solid-js";
 import { render } from "@solidjs/web";
+import { createSignal } from "solid-js";
 import { Modal } from "./components/modal";
 import { SidebarButton } from "./components/sidebar-button";
 import { handleCallback } from "./services/github-auth";

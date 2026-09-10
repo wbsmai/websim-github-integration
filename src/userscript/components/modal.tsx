@@ -1,6 +1,6 @@
+import { Portal, Show } from "@solidjs/web";
 import type { Setter } from "solid-js";
 import { createEffect, createSignal, onSettled } from "solid-js";
-import { Portal, Show } from "@solidjs/web";
 import { getStoredToken, login } from "../services/github-auth";
 
 export function Modal(props: { isOpen: boolean; setIsOpen: Setter<boolean> }) {

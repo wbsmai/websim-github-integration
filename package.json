@@ -2,12 +2,16 @@
   "name": "websim-github-integration",
   "private": true,
   "scripts": {
-    "lint": "biome check",
-    "format": "biome check --write --linter-enabled=false",
-    "typegen": "wrangler types ./src/worker-configuration.d.ts",
-    "dev": "usts build --watch",
     "build": "astro build && usts build",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "dev": "usts build --watch",
+    "format": "biome check --write --linter-enabled=false",
+    "lint": "biome check",
+    "typegen": "wrangler types ./src/worker-configuration.d.ts"
+  },
+  "overrides": {
+    "esbuild": "0.27.4",
+    "unstorage": "alpha"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.3.1",
@@ -28,9 +32,5 @@
     "@violentmonkey/types": "0.3.4",
     "usts": "0.1.1",
     "wrangler": "4.130.0"
-  },
-  "overrides": {
-    "esbuild": "0.27.4",
-    "unstorage": "alpha"
   }
 }
