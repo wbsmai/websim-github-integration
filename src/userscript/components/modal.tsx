@@ -1,6 +1,6 @@
 import type { Setter } from "solid-js";
-import { createEffect, createSignal, on, onMount } from "solid-js";
-import { Portal, Show } from "solid-js/web";
+import { createEffect, createSignal, onSettled } from "solid-js";
+import { Portal, Show } from "@solidjs/web";
 import { getStoredToken, login } from "../services/github-auth";
 
 export function Modal(props: { isOpen: boolean; setIsOpen: Setter<boolean> }) {
@@ -16,22 +16,22 @@ export function Modal(props: { isOpen: boolean; setIsOpen: Setter<boolean> }) {
     }
   }
 
-  onMount(checkAuth);
+  onSettled(() => {
+    checkAuth();
+  });
 
   createEffect(
-    on(
-      () => props.isOpen,
-      (isOpen) => {
-        if (isOpen && isLoading()) {
-          checkAuth();
-        }
-      },
-    ),
+    () => props.isOpen && isLoading(),
+    (shouldCheck) => {
+      if (shouldCheck) {
+        checkAuth();
+      }
+    },
   );
 
   return (
     <Show when={props.isOpen}>
-      <Portal useShadow={true}>
+      <Portal>
         <div
           style={{
             position: "fixed",

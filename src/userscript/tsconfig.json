@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsxImportSource": "solid-js",
+    "jsxImportSource": "@solidjs/web",
     "jsx": "preserve",
 
     "target": "esnext",
