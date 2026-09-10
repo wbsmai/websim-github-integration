@@ -2,34 +2,35 @@
   "name": "websim-github-integration",
   "private": true,
   "scripts": {
-    "lint": "biome check",
-    "format": "biome check --write --linter-enabled=false",
-    "typegen": "wrangler types ./src/worker-configuration.d.ts",
-    "dev": "usts build --watch",
     "build": "astro build && usts build",
-    "deploy": "wrangler deploy"
-  },
-  "dependencies": {
-    "@astrojs/cloudflare": "^13.1.5",
-    "@octokit/auth-app": "^8.2.0",
-    "astro": "^6.1.2",
-    "octokit": "^5.0.5",
-    "solid-js": "^1.9.12",
-    "tailwindcss": "^4.2.2",
-    "websim": "^0.1.0"
-  },
-  "devDependencies": {
-    "@astrojs/solid-js": "^6.0.1",
-    "@biomejs/biome": "2.4.9",
-    "@gameroman/config": "^0.0.5",
-    "@rolldown-plugin/solid": "^0.0.4",
-    "@tailwindcss/vite": "^4.2.2",
-    "@violentmonkey/types": "^0.3.2",
-    "usts": "^0.1.0",
-    "wrangler": "^4.78.0"
+    "deploy": "wrangler deploy",
+    "dev": "usts build --watch",
+    "format": "biome check --write",
+    "lint": "biome check",
+    "typegen": "wrangler types ./src/worker-configuration.d.ts"
   },
   "overrides": {
-    "esbuild": "^0.27.4",
+    "esbuild": "0.27.4",
     "unstorage": "alpha"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "14.3.1",
+    "@octokit/auth-app": "8.3.1",
+    "@solidjs/web": "2.0.0-rc.7",
+    "astro": "7.3.2",
+    "octokit": "^5.0.5",
+    "solid-js": "2.0.0-rc.7",
+    "tailwindcss": "4.3.3",
+    "websim": "0.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/solid-js": "7.0.2",
+    "@biomejs/biome": "2.5.12",
+    "@gameroman/config": "0.2.9",
+    "@rolldown-plugin/solid": "https://pkg.pr.new/rolldown-plugin/solid/@rolldown-plugin/solid@a1e46df",
+    "@tailwindcss/vite": "4.3.3",
+    "@violentmonkey/types": "0.3.4",
+    "usts": "0.1.1",
+    "wrangler": "4.130.0"
   }
 }

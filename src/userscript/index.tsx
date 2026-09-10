@@ -1,5 +1,5 @@
+import { render } from "@solidjs/web";
 import { createSignal } from "solid-js";
-import { render } from "solid-js/web";
 import { Modal } from "./components/modal";
 import { SidebarButton } from "./components/sidebar-button";
 import { handleCallback } from "./services/github-auth";
@@ -29,12 +29,13 @@ function injectButton() {
   entry.id = ENTRYPOINT_ID;
   bottomSidebarSection.prepend(entry);
 
-  const App = () => (
+  function App() {
+    return;
     <>
       <SidebarButton onClick={() => setIsModalOpen(true)} />
       <Modal isOpen={isModalOpen()} setIsOpen={setIsModalOpen} />
-    </>
-  );
+    </>;
+  }
 
   render(App, entry);
 }
